@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seletto Home & Decor — Em Breve</title>
-  <meta name="description" content="Seletto Home & Decor — peças exclusivas para transformar o seu lar. Em breve no nosso site." />
+  <meta name="description" content="Seletto Home & Decor — peças exclusivas para transformar o seu lar. Visite nossa loja no Mercado Livre." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,8 +20,6 @@
       --beige:       #E8E1D9;
       --offwhite:    #F5F3F0;
       --charcoal:    #3A3A3A;
-      --font-serif:  'Playfair Display', Georgia, serif;
-      --font-sans:   'Inter', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -29,296 +27,543 @@
     body {
       background: var(--offwhite);
       color: var(--charcoal);
-      font-family: var(--font-sans);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font-family: 'Inter', system-ui, sans-serif;
     }
 
-    /* ── NAV ── */
+    /* ══════════════════════════════════
+       NAVBAR — pequena, discreta
+    ══════════════════════════════════ */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(245,243,240,.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(78,127,117,.12);
+      height: 56px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 16px 32px;
-      gap: 12px;
-    }
-    nav svg { flex-shrink: 0; }
-    nav .brand {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: .04em;
-      color: var(--green-dark);
-    }
-    nav .brand span {
-      display: block;
-      font-family: var(--font-sans);
-      font-size: .6rem;
-      font-weight: 400;
-      letter-spacing: .18em;
-      color: var(--copper);
-      text-transform: uppercase;
-      margin-top: 1px;
+      padding: 0 32px;
+      gap: 10px;
+      background: rgba(245,243,240,.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(78,127,117,.1);
     }
 
-    /* ── HERO / BANNER ── */
-    .hero {
-      margin-top: 72px;
-      width: 100%;
+    .nav-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       overflow: hidden;
-      line-height: 0;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(78,127,117,.2);
     }
-    .hero svg {
+    .nav-logo img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 100%;
+      object-fit: cover;
     }
 
-    /* ── MAIN CONTENT ── */
-    main {
-      flex: 1;
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      letter-spacing: .04em;
+    }
+
+    .nav-spacer { flex: 1; }
+
+    .nav-tag {
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--copper);
+      border: 1px solid rgba(184,115,51,.3);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ══════════════════════════════════
+       HERO — tudo acima do fold
+    ══════════════════════════════════ */
+    .hero {
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 72px 24px 56px;
-      gap: 0;
+      padding: 80px 24px 40px;
+      position: relative;
+      overflow: hidden;
     }
 
+    /* fundo gradiente orgânico */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 80%, rgba(111,167,154,.22) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 45% at 85% 20%, rgba(184,115,51,.1) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 50% 110%, rgba(78,127,117,.12) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    /* ornamento circular de fundo */
+    .hero-orb {
+      position: absolute;
+      width: clamp(320px, 60vw, 640px);
+      height: clamp(320px, 60vw, 640px);
+      border-radius: 50%;
+      border: 1px solid rgba(78,127,117,.1);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-orb::after {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,115,51,.08);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      max-width: 600px;
+    }
+
+    /* linha de label topo */
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow .line {
+      width: 32px;
+      height: 1.5px;
+      background: var(--copper);
+      border-radius: 2px;
+    }
+    .hero-eyebrow span {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    /* badge animado */
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: var(--green-dark);
       color: #fff;
-      font-family: var(--font-sans);
-      font-size: .7rem;
+      font-size: .66rem;
       font-weight: 600;
-      letter-spacing: .18em;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      padding: 7px 18px;
+      padding: 6px 16px;
       border-radius: 100px;
-      margin-bottom: 32px;
+      margin-bottom: 22px;
     }
-    .badge::before {
-      content: '';
-      width: 6px; height: 6px;
+    .badge-dot {
+      width: 6px;
+      height: 6px;
       background: var(--copper-light);
       border-radius: 50%;
-      animation: pulse 1.8s ease-in-out infinite;
+      animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse {
       0%,100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: .5; transform: scale(1.4); }
+      50%      { opacity: .4; transform: scale(1.5); }
     }
 
     h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
       font-weight: 700;
+      line-height: 1.15;
       color: var(--charcoal);
-      line-height: 1.18;
-      max-width: 680px;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
     h1 em {
       font-style: italic;
       color: var(--green-dark);
     }
 
-    .sub {
-      font-size: clamp(.95rem, 2vw, 1.15rem);
+    .hero-sub {
+      font-size: clamp(.88rem, 2vw, 1rem);
       font-weight: 300;
-      color: #666;
-      max-width: 560px;
+      color: #777;
       line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    .tagline {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(.9rem, 1.8vw, 1.05rem);
-      color: var(--copper);
-      letter-spacing: .02em;
-      margin-bottom: 56px;
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      width: 100%;
-      max-width: 440px;
+      max-width: 420px;
       margin-bottom: 40px;
     }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--beige);
-    }
-    .divider span {
-      font-size: .7rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: #aaa;
-      white-space: nowrap;
-    }
 
-    /* ── ML SECTION ── */
-    .ml-section {
-      background: #fff;
-      border: 1.5px solid var(--beige);
-      border-radius: 20px;
-      padding: 48px 40px;
-      max-width: 520px;
+    /* ── CTA Mercado Livre ── */
+    .ml-cta-wrap {
       width: 100%;
-      margin-bottom: 64px;
-      box-shadow: 0 8px 40px rgba(78,127,117,.07);
-    }
-    .ml-section .label {
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 12px;
-    }
-    .ml-section h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(1.3rem, 3vw, 1.75rem);
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-    .ml-section p {
-      font-size: .92rem;
-      color: #777;
-      line-height: 1.65;
-      margin-bottom: 32px;
-    }
-
-    /* ─────────────────────────────────────────
-       MERCADO LIVRE LINK — altere a URL abaixo
-       ───────────────────────────────────────── */
-    .ml-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #FFE600;  /* cor oficial ML */
-      color: #333;
-      font-family: var(--font-sans);
-      font-size: 1rem;
-      font-weight: 700;
-      text-decoration: none;
-      padding: 18px 36px;
-      border-radius: 12px;
-      letter-spacing: .02em;
-      transition: transform .15s, box-shadow .15s;
-      box-shadow: 0 4px 20px rgba(255,230,0,.4);
-      width: 100%;
-    }
-    .ml-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(255,230,0,.55);
-    }
-    .ml-btn:active { transform: translateY(0); }
-
-    /* ── FEATURES ── */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 32px;
-      max-width: 760px;
-      width: 100%;
-      margin-bottom: 64px;
-    }
-    .feature {
+      max-width: 420px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
-      padding: 32px 24px;
-      background: #fff;
-      border-radius: 16px;
-      border: 1px solid var(--beige);
+      gap: 10px;
     }
-    .feature-icon {
-      width: 48px; height: 48px;
-      background: var(--offwhite);
-      border-radius: 12px;
+
+    .ml-cta-label {
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+    /*
+      ╔═══════════════════════════════════════════════╗
+      ║  LINK DO MERCADO LIVRE — edite o href abaixo  ║
+      ╚═══════════════════════════════════════════════╝
+    */
+    .ml-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 28px;
+      background: #FFE600;
+      color: #1a1a1a;
+      font-size: clamp(.95rem, 2.2vw, 1.05rem);
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 14px;
+      letter-spacing: .01em;
+      box-shadow:
+        0 4px 16px rgba(255,230,0,.35),
+        0 1px 3px rgba(0,0,0,.08);
+      border: 1.5px solid rgba(184,115,51,.2);
+      transition: transform .18s ease, box-shadow .18s ease;
     }
-    .feature h3 {
-      font-family: var(--font-serif);
+    .ml-btn:hover, .ml-btn:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(255,230,0,.5), 0 2px 6px rgba(0,0,0,.1);
+      outline: none;
+    }
+    .ml-btn:active { transform: translateY(0); }
+
+    .ml-btn-icon {
+      width: 28px;
+      height: 28px;
+      background: #fff;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
       font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .ml-btn-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.2;
+    }
+    .ml-btn-text span:first-child {
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .ml-note {
+      font-size: .7rem;
+      color: #bbb;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ml-note::before, .ml-note::after {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+      border-radius: 1px;
+    }
+
+    /* seta scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: .4;
+      animation: float 2.4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+    .scroll-hint span {
+      font-size: .58rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+    .scroll-hint svg { color: var(--charcoal); }
+
+    /* ══════════════════════════════════
+       BANNER
+    ══════════════════════════════════ */
+    .banner-section {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .banner-section svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ══════════════════════════════════
+       FEATURES
+    ══════════════════════════════════ */
+    .features-section {
+      padding: 80px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .section-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .section-label .eyebrow {
+      font-size: .66rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+    .section-label h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
       font-weight: 600;
       color: var(--charcoal);
     }
+    .section-label h2 em {
+      font-style: italic;
+      color: var(--green-dark);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 860px;
+      width: 100%;
+    }
+
+    .feature {
+      background: #fff;
+      border: 1px solid var(--beige);
+      border-radius: 16px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      transition: box-shadow .2s;
+    }
+    .feature:hover {
+      box-shadow: 0 8px 32px rgba(78,127,117,.1);
+    }
+
+    .feature-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--beige);
+      line-height: 1;
+    }
+
+    .feature h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
     .feature p {
       font-size: .82rem;
       color: #888;
-      line-height: 1.6;
-      text-align: center;
+      line-height: 1.65;
     }
 
-    /* ── FOOTER ── */
-    footer {
+    .feature-accent {
+      width: 24px;
+      height: 2px;
+      background: var(--copper);
+      border-radius: 2px;
+      margin-top: auto;
+    }
+
+    /* ══════════════════════════════════
+       QUOTE BLOCK
+    ══════════════════════════════════ */
+    .quote-block {
       background: var(--green-dark);
-      color: rgba(255,255,255,.7);
+      color: #fff;
+      padding: 72px 24px;
       text-align: center;
-      padding: 32px 24px;
-      font-size: .8rem;
-      line-height: 1.8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      line-height: .6;
+      color: rgba(255,255,255,.2);
+      font-weight: 700;
+    }
+
+    .quote-block blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      max-width: 620px;
+      color: rgba(255,255,255,.92);
+    }
+
+    .quote-block cite {
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+      font-style: normal;
+    }
+
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 36px 24px;
+      font-size: .78rem;
+      line-height: 2;
     }
     footer strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
       color: #fff;
-      font-family: var(--font-serif);
+      letter-spacing: .04em;
     }
     footer .copper { color: var(--copper-light); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .ml-section { padding: 36px 24px; }
-      main { padding: 56px 20px 48px; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAV DISCRETA -->
   <nav>
-    <!-- Logo Seletto -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width="40" height="40">
-      <circle cx="24" cy="24" r="22" fill="#4E7F75" opacity="0.12"/>
-      <circle cx="24" cy="24" r="22" stroke="#4E7F75" stroke-width="1.5" fill="none"/>
-      <path d="M16 30 C16 30 14 27 14 24 C14 18 18 13 25 13 C31 13 34 17 34 20 C34 23 31 25 25 25 C19 25 16 27 16 30 C16 33 19 35 25 35 C31 35 34 31 34 29"
-        stroke="#4E7F75" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-      <circle cx="34" cy="29" r="2" fill="#B87333"/>
-    </svg>
-    <div class="brand">
-      Seletto
-      <span>Home &amp; Decor</span>
+    <div class="nav-logo">
+      <img src="logo.png" alt="Seletto" />
     </div>
+    <span class="nav-brand">Seletto</span>
+    <div class="nav-spacer"></div>
+    <span class="nav-tag">Em breve</span>
   </nav>
 
-  <!-- BANNER HERO -->
-  <div class="hero">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" aria-hidden="true">
+  <!-- HERO — tudo visível sem scroll -->
+  <section class="hero">
+    <div class="hero-orb"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span>Seletto Home &amp; Decor</span>
+        <span class="line"></span>
+      </div>
+
+      <div class="badge">
+        <div class="badge-dot"></div>
+        Site em construção
+      </div>
+
+      <h1>
+        O lar que você<br/>
+        sempre <em>imaginou</em>
+      </h1>
+
+      <p class="hero-sub">
+        Peças exclusivas, sofisticadas e cuidadosamente selecionadas
+        para transformar cada ambiente da sua casa.
+      </p>
+
+      <div class="ml-cta-wrap">
+        <span class="ml-cta-label">Nossa loja oficial já está disponível</span>
+
+        <!--
+          ╔═══════════════════════════════════════════════╗
+          ║  TROQUE O href PELO LINK DA SUA LOJA NO ML   ║
+          ╚═══════════════════════════════════════════════╝
+        -->
+        <a
+          href="https://www.mercadolivre.com.br/perfil/selettohome"
+          class="ml-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="ml-btn-icon">🛒</div>
+          <div class="ml-btn-text">
+            <span>Compre agora em</span>
+            <span>Mercado Livre</span>
+          </div>
+        </a>
+
+        <span class="ml-note">Compra segura · Entrega garantida</span>
+      </div>
+    </div>
+
+    <!-- seta indicando que há mais abaixo -->
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Saiba mais</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="banner-section" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
       <defs>
         <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style="stop-color:#4E7F75"/>
@@ -340,83 +585,55 @@
     </svg>
   </div>
 
-  <!-- MAIN -->
-  <main>
-    <div class="badge">Em breve</div>
-
-    <h1>
-      Um novo jeito de<br/>
-      <em>decorar com elegância</em>
-    </h1>
-
-    <p class="sub">
-      Estamos preparando uma experiência única para você encontrar as peças perfeitas
-      e transformar cada ambiente da sua casa com sofisticação e bom gosto.
-    </p>
-
-    <p class="tagline">"Seu lar merece o melhor — e nós sabemos o que é o melhor."</p>
-
-    <div class="divider">
-      <span>Nossa loja oficial</span>
+  <!-- FEATURES -->
+  <section class="features-section">
+    <div class="section-label">
+      <span class="eyebrow">Por que Seletto</span>
+      <h2>Decoração com <em>propósito</em></h2>
     </div>
 
-    <!-- MERCADO LIVRE CARD -->
-    <div class="ml-section">
-      <p class="label">Disponível agora</p>
-      <h2>Nossa loja já está no<br/>Mercado Livre</h2>
-      <p>
-        Enquanto o site está sendo preparado, você já pode comprar
-        todas as nossas peças com segurança, pelo Mercado Livre —
-        nossa loja oficial com avaliações verificadas e entrega garantida.
-      </p>
-
-      <!--
-        ╔══════════════════════════════════════════════════════╗
-        ║  LINK DO MERCADO LIVRE — altere o href abaixo        ║
-        ║  Substitua a URL pelo endereço da sua loja no ML     ║
-        ╚══════════════════════════════════════════════════════╝
-      -->
-      <a
-        href="https://www.mercadolivre.com.br/perfil/SELETTO"
-        class="ml-btn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <!-- Ícone ML -->
-        <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="24" cy="24" rx="22" ry="22" fill="#FFE600"/>
-          <path d="M24 10C16.3 10 10 16.3 10 24s6.3 14 14 14 14-6.3 14-14S31.7 10 24 10z" fill="#FFE600"/>
-          <path d="M17 22l7-6 7 6" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path d="M20 22v8h8v-8" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-        Ver loja no Mercado Livre
-      </a>
-    </div>
-
-    <!-- FEATURES -->
-    <div class="features">
+    <div class="features-grid">
       <div class="feature">
-        <div class="feature-icon">✦</div>
+        <span class="feature-num">01</span>
         <h3>Curadoria exclusiva</h3>
-        <p>Cada peça selecionada a mão por especialistas em decoração de interiores.</p>
+        <p>Cada peça selecionada por especialistas em decoração de interiores, com foco em sofisticação e durabilidade.</p>
+        <div class="feature-accent"></div>
       </div>
       <div class="feature">
-        <div class="feature-icon">◈</div>
+        <span class="feature-num">02</span>
         <h3>Materiais premium</h3>
-        <p>Do acabamento à embalagem, compromisso com a mais alta qualidade.</p>
+        <p>Do acabamento à embalagem, compromisso absoluto com a mais alta qualidade em cada detalhe.</p>
+        <div class="feature-accent"></div>
       </div>
       <div class="feature">
-        <div class="feature-icon">⟡</div>
+        <span class="feature-num">03</span>
         <h3>Entrega com cuidado</h3>
-        <p>Embalagem especial para que cada peça chegue intacta até você.</p>
+        <p>Embalagem especial para garantir que cada peça chegue intacta e pronta para transformar seu espaço.</p>
+        <div class="feature-accent"></div>
+      </div>
+      <div class="feature">
+        <span class="feature-num">04</span>
+        <h3>Estilo de vida</h3>
+        <p>Mais do que objetos — criamos ambientes que refletem quem você é e como você quer viver.</p>
+        <div class="feature-accent"></div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <div class="quote-mark">"</div>
+    <blockquote>
+      Seu lar é o reflexo de quem você é.<br/>
+      Nós ajudamos você a contar essa história com elegância.
+    </blockquote>
+    <cite>Seletto Home &amp; Decor</cite>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <strong>Seletto Home &amp; Decor</strong><br/>
-    <span class="copper">Sofisticação &amp; Exclusividade</span><br/><br/>
+    <strong>Seletto Home &amp; Decor</strong>
+    <span class="copper">Sofisticação · Exclusividade · Elegância</span>
     &copy; 2025 Seletto. Todos os direitos reservados.
   </footer>
 
