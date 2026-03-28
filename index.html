@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seletto Home & Decor — Em Breve</title>
+  <meta name="description" content="Seletto Home & Decor — peças exclusivas para transformar o seu lar. Em breve no nosso site." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #6FA79A;
+      --green-dark:  #4E7F75;
+      --green-light: #A8C9C1;
+      --copper:      #B87333;
+      --copper-light:#D9A066;
+      --beige:       #E8E1D9;
+      --offwhite:    #F5F3F0;
+      --charcoal:    #3A3A3A;
+      --font-serif:  'Playfair Display', Georgia, serif;
+      --font-sans:   'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--offwhite);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245,243,240,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(78,127,117,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 32px;
+      gap: 12px;
+    }
+    nav svg { flex-shrink: 0; }
+    nav .brand {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--green-dark);
+    }
+    nav .brand span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: .6rem;
+      font-weight: 400;
+      letter-spacing: .18em;
+      color: var(--copper);
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    /* ── HERO / BANNER ── */
+    .hero {
+      margin-top: 72px;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .hero svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 72px 24px 56px;
+      gap: 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-dark);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--copper-light);
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .5; transform: scale(1.4); }
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.18;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--green-dark);
+    }
+
+    .sub {
+      font-size: clamp(.95rem, 2vw, 1.15rem);
+      font-weight: 300;
+      color: #666;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(.9rem, 1.8vw, 1.05rem);
+      color: var(--copper);
+      letter-spacing: .02em;
+      margin-bottom: 56px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--beige);
+    }
+    .divider span {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #aaa;
+      white-space: nowrap;
+    }
+
+    /* ── ML SECTION ── */
+    .ml-section {
+      background: #fff;
+      border: 1.5px solid var(--beige);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 520px;
+      width: 100%;
+      margin-bottom: 64px;
+      box-shadow: 0 8px 40px rgba(78,127,117,.07);
+    }
+    .ml-section .label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .ml-section h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .ml-section p {
+      font-size: .92rem;
+      color: #777;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    /* ─────────────────────────────────────────
+       MERCADO LIVRE LINK — altere a URL abaixo
+       ───────────────────────────────────────── */
+    .ml-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #FFE600;  /* cor oficial ML */
+      color: #333;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 12px;
+      letter-spacing: .02em;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 20px rgba(255,230,0,.4);
+      width: 100%;
+    }
+    .ml-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(255,230,0,.55);
+    }
+    .ml-btn:active { transform: translateY(0); }
+
+    /* ── FEATURES ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      max-width: 760px;
+      width: 100%;
+      margin-bottom: 64px;
+    }
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 32px 24px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--beige);
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      background: var(--offwhite);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .feature h3 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .feature p {
+      font-size: .82rem;
+      color: #888;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-dark);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .8rem;
+      line-height: 1.8;
+    }
+    footer strong {
+      color: #fff;
+      font-family: var(--font-serif);
+    }
+    footer .copper { color: var(--copper-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .ml-section { padding: 36px 24px; }
+      main { padding: 56px 20px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <!-- Logo Seletto -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width="40" height="40">
+      <circle cx="24" cy="24" r="22" fill="#4E7F75" opacity="0.12"/>
+      <circle cx="24" cy="24" r="22" stroke="#4E7F75" stroke-width="1.5" fill="none"/>
+      <path d="M16 30 C16 30 14 27 14 24 C14 18 18 13 25 13 C31 13 34 17 34 20 C34 23 31 25 25 25 C19 25 16 27 16 30 C16 33 19 35 25 35 C31 35 34 31 34 29"
+        stroke="#4E7F75" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <circle cx="34" cy="29" r="2" fill="#B87333"/>
+    </svg>
+    <div class="brand">
+      Seletto
+      <span>Home &amp; Decor</span>
+    </div>
+  </nav>
+
+  <!-- BANNER HERO -->
+  <div class="hero">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" aria-hidden="true">
+      <defs>
+        <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#4E7F75"/>
+          <stop offset="100%" style="stop-color:#A8C9C1"/>
+        </linearGradient>
+        <pattern id="dots1" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="20" r="1.5" fill="white" opacity="0.15"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="400" fill="url(#bg1)"/>
+      <rect width="1200" height="400" fill="url(#dots1)"/>
+      <circle cx="900" cy="200" r="260" fill="none" stroke="white" stroke-width="1" opacity="0.2"/>
+      <circle cx="900" cy="200" r="200" fill="none" stroke="white" stroke-width="1" opacity="0.15"/>
+      <circle cx="900" cy="200" r="140" fill="white" opacity="0.05"/>
+      <rect x="80" y="185" width="60" height="3" fill="#B87333"/>
+      <text x="80" y="160" font-family="Georgia, serif" font-size="14" fill="#D9A066" letter-spacing="4" opacity="0.9">SELETTO HOME &amp; DECOR</text>
+      <text x="80" y="230" font-family="Georgia, serif" font-size="52" font-weight="600" fill="white">Transforme seu Lar</text>
+      <text x="80" y="275" font-family="Arial, sans-serif" font-size="20" fill="white" opacity="0.85">Peças exclusivas com sofisticação e elegância</text>
+    </svg>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    <div class="badge">Em breve</div>
+
+    <h1>
+      Um novo jeito de<br/>
+      <em>decorar com elegância</em>
+    </h1>
+
+    <p class="sub">
+      Estamos preparando uma experiência única para você encontrar as peças perfeitas
+      e transformar cada ambiente da sua casa com sofisticação e bom gosto.
+    </p>
+
+    <p class="tagline">"Seu lar merece o melhor — e nós sabemos o que é o melhor."</p>
+
+    <div class="divider">
+      <span>Nossa loja oficial</span>
+    </div>
+
+    <!-- MERCADO LIVRE CARD -->
+    <div class="ml-section">
+      <p class="label">Disponível agora</p>
+      <h2>Nossa loja já está no<br/>Mercado Livre</h2>
+      <p>
+        Enquanto o site está sendo preparado, você já pode comprar
+        todas as nossas peças com segurança, pelo Mercado Livre —
+        nossa loja oficial com avaliações verificadas e entrega garantida.
+      </p>
+
+      <!--
+        ╔══════════════════════════════════════════════════════╗
+        ║  LINK DO MERCADO LIVRE — altere o href abaixo        ║
+        ║  Substitua a URL pelo endereço da sua loja no ML     ║
+        ╚══════════════════════════════════════════════════════╝
+      -->
+      <a
+        href="https://www.mercadolivre.com.br/perfil/SELETTO"
+        class="ml-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <!-- Ícone ML -->
+        <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="24" cy="24" rx="22" ry="22" fill="#FFE600"/>
+          <path d="M24 10C16.3 10 10 16.3 10 24s6.3 14 14 14 14-6.3 14-14S31.7 10 24 10z" fill="#FFE600"/>
+          <path d="M17 22l7-6 7 6" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M20 22v8h8v-8" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        Ver loja no Mercado Livre
+      </a>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">✦</div>
+        <h3>Curadoria exclusiva</h3>
+        <p>Cada peça selecionada a mão por especialistas em decoração de interiores.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">◈</div>
+        <h3>Materiais premium</h3>
+        <p>Do acabamento à embalagem, compromisso com a mais alta qualidade.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⟡</div>
+        <h3>Entrega com cuidado</h3>
+        <p>Embalagem especial para que cada peça chegue intacta até você.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>Seletto Home &amp; Decor</strong><br/>
+    <span class="copper">Sofisticação &amp; Exclusividade</span><br/><br/>
+    &copy; 2025 Seletto. Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
